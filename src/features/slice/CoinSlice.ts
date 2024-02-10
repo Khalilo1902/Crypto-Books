@@ -1,6 +1,7 @@
-import {createEntityAdapter, createSlice, EntityState} from "@reduxjs/toolkit";
+import {createAsyncThunk, createEntityAdapter, createSlice, EntityState} from "@reduxjs/toolkit";
 import {ICoinItem} from "../../interface";
 import {RootState} from "../store.ts";
+import {getAllCoins} from "../service/service.ts";
 
 interface ICoinState {
     status: "Loading" | "Failed" | "Completed"
@@ -15,14 +16,28 @@ const initialState: ICoinState & EntityState<ICoinItem, string> = coinAdapter.ge
     status: "Loading",
     error: ""
 })
-
+export const getApiAllCoins = createAsyncThunk("coin/getApiAllCoins", async () => {
+    const response = await getAllCoins()
+    return response.data
+})
 
 const coinSlice = createSlice({
     name: "coin",
     initialState,
     reducers: {},
-    extraReducers: () => {
-
+    extraReducers: (builder) => {
+        builder
+            .addCase(getApiAllCoins.pending, (state) => {
+                state.status = "Loading"
+            })
+            .addCase(getApiAllCoins.fulfilled, (state, action) => {
+                state.status = "Completed"
+                coinAdapter.setAll(state, action.payload)
+            })
+            .addCase(getApiAllCoins.rejected, (state, action) => {
+                state.status = "Failed"
+                state.error = action.error.message || " an Error is Accourded"
+            })
     }
 })
 

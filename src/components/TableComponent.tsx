@@ -1,6 +1,11 @@
+import {useSelector} from "react-redux";
+import {displayAll} from "../features/slice/CoinSlice.ts";
+import {ICoinItem} from "../interface";
 
 
 const TableComponent = () => {
+    const cryptoData:ICoinItem[] = useSelector(displayAll)
+    console.log(cryptoData)
     return (
         <div
         className=" flex flex-col mt-9 border border-gray-100 rounded "

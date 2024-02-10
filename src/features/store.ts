@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-import coinSlice from "./slice/CoinSlice.ts";
+import coinSlice, {getApiAllCoins} from "./slice/CoinSlice.ts";
 
 
 const store = configureStore({
@@ -8,7 +8,7 @@ coin:coinSlice
     }
 })
 
-
+store.dispatch(getApiAllCoins())
 export type RootState = ReturnType <typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export default store
