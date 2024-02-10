@@ -14,22 +14,24 @@ const TableComponent = () => {
         <th className="py-2">name</th>
         <th className="py-2">price</th>
         <th className="py-2">total volume</th>
-        <th> className="py-2 market cap change</th>
+        <th className="py-2">market cap change</th>
         <th className="py-2">1H</th>
         <th className="py-2">24H</th>
         <th className="py-2">7D</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>asset</td>
-        <td>name</td>
-        <td>price</td>
-        <td>total volume</td>
-        <td>market cap change</td>
-        <td>1H</td>
-        <td>24H</td>
-        <td>7D</td>
+    <tr className="text-center text-base border-b border-gray-100
+    hover:bg-gray-200 last:border-b-0
+    ">
+        <td className="py-4">asset</td>
+        <td className="py-4">name</td>
+        <td className="py-4">price</td>
+        <td className="py-4">total volume</td>
+        <td className="py-4">market cap change</td>
+        <td className="py-4">1H</td>
+        <td className="py-4">24H</td>
+        <td className="py-4">7D</td>
     </tr>
     </tbody>
 </table>
