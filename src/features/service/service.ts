@@ -9,13 +9,21 @@ const getAllCoins = async ()=>{
 }
 
 
+
 const getSearchCoins = async (query:string)=>{
     const url = `${SearchCoins_Url}${query}`
     return await axios.get(url)
 }
 
+const SearchDataCoins_Url = async (coinId: string) => {
+    const url = `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`;
+    return await axios.get(url);
+};
+
+
 
 export {
     getAllCoins,
-    getSearchCoins
+    getSearchCoins,
+    SearchDataCoins_Url
 }

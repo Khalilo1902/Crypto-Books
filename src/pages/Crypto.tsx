@@ -3,7 +3,10 @@ import Filter from "../components/Filter.tsx";
 
 
 const Crypto = () => {
-return (
+
+
+
+    return (
     <section className="z-20 w-[80%] flex flex-col mt-16 mb-24 relative">
         <Filter/>
 <TableComponent/>
