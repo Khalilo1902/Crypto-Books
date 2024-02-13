@@ -1,29 +1,8 @@
-import axios from "axios"
+import axios from "axios";
 
-const Server_Url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en"
-const SearchCoins_Url = `https://api.coingecko.com/api/v3/search?query=`
+const Server_Url =
+  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=en";
 
-const getAllCoins = async ()=>{
-    const url = `${Server_Url}`
-    return await axios.get(url)
-}
-
-
-
-const getSearchCoins = async (query:string)=>{
-    const url = `${SearchCoins_Url}${query}`
-    return await axios.get(url)
-}
-
-const SearchDataCoins_Url = async (coinId: string) => {
-    const url = `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`;
-    return await axios.get(url);
+export const getAllCoins = () => {
+  return axios.get(Server_Url);
 };
-
-
-
-export {
-    getAllCoins,
-    getSearchCoins,
-    SearchDataCoins_Url
-}
