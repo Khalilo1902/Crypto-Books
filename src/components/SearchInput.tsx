@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   displayAllCoin,
-  displayCoinById,
   setCoinId,
 } from "../features/slice/CoinSlice.ts";
 import { useEffect, useState } from "react";
