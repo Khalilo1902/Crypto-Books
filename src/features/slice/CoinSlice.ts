@@ -53,6 +53,6 @@ export const {
 } = coinAdapter.getSelectors((state: RootState) => state.coin)
 
 
-const {setCoinId}= coinSlice.actions
+export const {setCoinId}= coinSlice.actions
 export default coinSlice.reducer
 

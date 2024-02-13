@@ -46,7 +46,6 @@ const searchCoinsSlice = createSlice({
             })
             .addCase(searchDataCoins.fulfilled, (state, action) => {
                 searchCoinAdapter.setAll(state, action.payload);
-                console.log("First element id:", action.payload[0].id);
             })
             .addCase(searchApiCoins.rejected, (state, action) => {
                 state.status = "Failed";
