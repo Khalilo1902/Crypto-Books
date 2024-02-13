@@ -6,7 +6,7 @@ import {RootState} from "../store.ts";
 interface ISearchState {
     status: "Loading" | "Completed" | "Failed"
     error: string | null
-    coinId:string
+
 }
 
 const searchCoinAdapter = createEntityAdapter<ISearchCoins, string>({
@@ -16,7 +16,7 @@ const searchCoinAdapter = createEntityAdapter<ISearchCoins, string>({
 const initialState: ISearchState & EntityState<ISearchCoins, string> = searchCoinAdapter.getInitialState({
     status: "Loading",
     error: "",
-    coinId:""
+
 })
 
 export const searchApiCoins = createAsyncThunk("searchCoins/searchApiCoins", async (query:string) => {
@@ -34,9 +34,7 @@ const searchCoinsSlice = createSlice({
     name: "searchCoins",
     initialState,
     reducers: {
-        setCoinId:(state,action)=>{
-            state.coinId= action.payload
-        }
+
     },
     extraReducers: (builder) => {
         builder.addCase(searchApiCoins.pending, (state) => {
@@ -63,5 +61,5 @@ export const {
     selectById: displayByIdSearchCoins
 } = searchCoinAdapter.getSelectors((state: RootState) => state.searchCoins)
 
-export const {setCoinId} = searchCoinsSlice.actions
+
 export default searchCoinsSlice.reducer

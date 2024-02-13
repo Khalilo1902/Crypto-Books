@@ -2,7 +2,7 @@ import searchIcon from "../assets/search-icon.svg";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDataCoins, displayAllSearchCoins } from "../features/slice/SearchSlice.ts";
-import { AppDispatch } from "../features/store.ts";
+import {AppDispatch} from "../features/store.ts";
 import { ISearchCoins } from "../interface";
 import { DebouncedFunc } from "lodash";
 
@@ -11,6 +11,7 @@ type ISearchProps = {
 }
 
 const SearchInput = ({ handleSearch }: ISearchProps) => {
+
     const [searchText, setSearchText] = useState("");
     const allSearchCoins: ISearchCoins[] = useSelector(displayAllSearchCoins);
     const dispatch = useDispatch<AppDispatch>();
@@ -48,7 +49,7 @@ const SearchInput = ({ handleSearch }: ISearchProps) => {
                     value={searchText}
                     className="w-full rounded bg-gray-200 placeholder:text-gray-200 pl-2 required outline-0 border border-transparent focus:border-cyan"
                     placeholder="search here..."
-                    autoComplete="off"
+                  autoComplete="off"
                 />
                 <button
                     type="submit"
